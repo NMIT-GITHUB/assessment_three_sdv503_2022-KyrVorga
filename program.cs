@@ -1,33 +1,30 @@
 /* File Information
 Title: Javascript conversion
 Author: Rhylei Tremlett
-Version: 1.2
+Version: 1.3
 Date: 1/06/2022
 ------------------------------------------------------------- */
 using System;
 
 class Program
 {
-    public int[] Construct()
+    public int[][] Construct(int size)
     {
-        int[] array = { 1, 2, 3 };
-        return array;
+        int[][] jagged = new int[size][];
+        return jagged;
     }
 
-    public string Sender()
-    {
-        return "hello world!";
-    }
     static void Main()
     {
         Program p = new Program();
-        int[] result = p.Construct();
+        string size = Console.ReadLine();
+        int[][] result = p.Construct(Int32.Parse(size));
 
         for (int i = 0; i < result.Length; i++)
         {
             Console.WriteLine(result[i]);
         }
-        Console.WriteLine("Hello World!");
+        Console.WriteLine("array: "+ string.Join(",", result));
         Console.ReadLine();
     }
 }

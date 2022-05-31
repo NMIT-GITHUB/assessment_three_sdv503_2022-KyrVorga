@@ -1,24 +1,33 @@
 /* File Information
 Title: Javascript conversion
 Author: Rhylei Tremlett
-Version: 1
-Date: 24/05/2022
+Version: 1.2
+Date: 1/06/2022
 ------------------------------------------------------------- */
 using System;
 
 class Program
 {
-    string name;
-
-    public void GetName()
+    public int[] Construct()
     {
-        name = Console.ReadLine();
+        int[] array = { 1, 2, 3 };
+        return array;
     }
 
+    public string Sender()
+    {
+        return "hello world!";
+    }
     static void Main()
     {
-        Program instance = new Program();
-        instance.GetName();
-        Console.WriteLine(name);
+        Program p = new Program();
+        int[] result = p.Construct();
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine(result[i]);
+        }
+        Console.WriteLine("Hello World!");
+        Console.ReadLine();
     }
 }

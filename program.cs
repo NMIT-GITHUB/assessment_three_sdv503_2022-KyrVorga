@@ -1,8 +1,8 @@
 /* File Information
-Title: Javascript conversion
+Title: SDV503 Assessment 3
 Author: Rhylei Tremlett
-Version: 1.3
-Date: 1/06/2022
+Version: 1.4
+Date: 2/06/2022
 ------------------------------------------------------------- */
 using System;
 using System.Collections.Generic;
@@ -90,15 +90,73 @@ namespace Assessment_3
     {
         public void Begin()
         {
-            Console.WriteLine("Hello World!");
-            Console.ReadLine();
+            Calculator calculator = new Calculator();
+            
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder");
+                int choice = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter the first number:");
+                int first = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the second number");
+                int second = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine(calculator.Addition(first, second));
+                        break;
+                    case 2:
+                        Console.WriteLine(calculator.Subtraction(first, second));
+                        break;
+                    case 3:
+                        Console.WriteLine(calculator.Division(first, second));
+                        break;
+                    case 4:
+                        Console.WriteLine(calculator.Muliplication(first, second));
+                        break;
+                    case 5:
+                        Console.WriteLine(calculator.Power(first, second));
+                        break;
+                    case 6:
+                        Console.WriteLine(calculator.Remainder(first, second));
+                        break;
+                }
+            }
+        }
+
+        private double Addition(double value1, double value2)
+        {
+            return value1 + value2;
+        }
+        private double Subtraction(double value1, double value2)
+        {
+            return value1 - value2;
+        }
+        private double Division(double value1, double value2)
+        {
+            return value1 / value2;
+        }
+        private double Muliplication(double value1, double value2)
+        {
+            return value1 * value2;
+        }
+        private double Power(double value1, double value2)
+        {
+            return Math.Pow(value1, value2);
+        }
+        private double Remainder(double value1, double value2)
+        {
+            return value1 % value2;
         }
     }
     internal class Program
     {
         static void Main()
         {
-            Console.WriteLine("Please select which program you would like to run: 1 for Calculator, 2 for Javascript Converted Code");
+            Console.WriteLine("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program.\n1. Calculator\n2. Javascript Converted Code");
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {

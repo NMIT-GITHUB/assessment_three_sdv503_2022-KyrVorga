@@ -95,15 +95,18 @@ namespace Assessment_3
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder");
-                int choice = int.Parse(Console.ReadLine());
 
+                string choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder");
+
+                // Validate
                 Console.WriteLine("Enter the first number:");
-                int first = int.Parse(Console.ReadLine());
+                string first = Input("Enter the first number:");
+                // Validate
                 Console.WriteLine("Enter the second number");
-                int second = int.Parse(Console.ReadLine());
+                int? second = Input("Enter the second number");
+                second = Validate(choice,1,6);
 
-                switch (choice)
+                switch (int.Parse(choice))
                 {
                     case 1:
                         Console.WriteLine(calculator.Addition(first, second));
@@ -126,7 +129,33 @@ namespace Assessment_3
                 }
             }
         }
-
+        private string Input(string message)
+        {
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            return input;
+        }
+        private int? Validate(string value, int min, int max)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+            bool success = int.TryParse(value, out int result);
+            if (!success)
+            {
+                return null;
+            }
+            if (result < min)
+            {
+                return null;
+            }
+            if (result > max)
+            {
+                return null;
+            }
+            return result;
+        }
         private double Addition(double value1, double value2)
         {
             return value1 + value2;
@@ -156,7 +185,7 @@ namespace Assessment_3
     {
         static void Main()
         {
-            Console.WriteLine("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program.\n1. Calculator\n2. Javascript Converted Code");
+            Console.WriteLine("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code");
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {

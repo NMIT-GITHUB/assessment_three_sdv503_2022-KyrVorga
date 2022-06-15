@@ -103,8 +103,8 @@ namespace Assessment_3
                 string first = Input("Enter the first number:");
                 // Validate
                 Console.WriteLine("Enter the second number");
-                int? second = Input("Enter the second number");
-                second = Validate(choice,1,6);
+                string second = Input("Enter the second number");
+                second = Validate(second);
 
                 switch (int.Parse(choice))
                 {
@@ -133,27 +133,12 @@ namespace Assessment_3
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
+
             return input;
         }
-        private int? Validate(string value, int min, int max)
+        private int Validate(string? value)
         {
-            if (value == null)
-            {
-                return null;
-            }
-            bool success = int.TryParse(value, out int result);
-            if (!success)
-            {
-                return null;
-            }
-            if (result < min)
-            {
-                return null;
-            }
-            if (result > max)
-            {
-                return null;
-            }
+            int result = Convert.ToInt32(value);
             return result;
         }
         private double Addition(double value1, double value2)

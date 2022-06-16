@@ -10,3 +10,9 @@ C:\Users\Hakug\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\
 C:\Users\Hakug\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\ConsoleApplication.pdb
 C:\Users\Hakug\source\repos\assessment_three_sdv503_2022-KyrVorga\bin\Debug\ConsoleApplication.exe
 C:\Users\Hakug\source\repos\assessment_three_sdv503_2022-KyrVorga\bin\Debug\ConsoleApplication.pdb
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\bin\Debug\ConsoleApplication.exe
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\bin\Debug\ConsoleApplication.pdb
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\Assessment 3.csproj.AssemblyReference.cache
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\Assessment 3.csproj.CoreCompileInputs.cache
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\rhyle\source\repos\assessment_three_sdv503_2022-KyrVorga\obj\x86\Debug\ConsoleApplication.pdb

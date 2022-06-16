@@ -1,13 +1,10 @@
 /* File Information
 Title: SDV503 Assessment 3
 Author: Rhylei Tremlett
-Version: 1.4
-Date: 2/06/2022
+Version: 1.5
+Date: 16/06/2022
 ------------------------------------------------------------- */
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Assessment_3
 {
@@ -96,16 +93,17 @@ namespace Assessment_3
             while (flag)
             {
 
+                Console.WriteLine("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder");
+                string first = Console.ReadLine();
+                int.TryParse(first, out int result);
+
+                Console.WriteLine(result);                                                                                                                                                                                                                                                                                                                         
+                /*
                 string choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder");
-
-                // Validate
-                Console.WriteLine("Enter the first number:");
                 string first = Input("Enter the first number:");
-                // Validate
-                Console.WriteLine("Enter the second number");
                 string second = Input("Enter the second number");
-                second = Validate(second);
-
+                Console.WriteLine(second.GetType());
+                /*
                 switch (int.Parse(choice))
                 {
                     case 1:
@@ -127,20 +125,35 @@ namespace Assessment_3
                         Console.WriteLine(calculator.Remainder(first, second));
                         break;
                 }
+                */
             }
         }
+        /*
         private string Input(string message)
         {
             Console.WriteLine(message);
-            string input = Console.ReadLine();
-
+            bool isNotInt = true;
+            string input = null;
+            while (isNotInt == true)
+            {
+                input = Console.ReadLine();
+                if (Validate(input))
+                {
+                    isNotInt = false;
+                }
+            }
             return input;
         }
-        private int Validate(string? value)
-        {
-            int result = Convert.ToInt32(value);
-            return result;
+        private bool Validate(string value)
+        { // change var v to something more decriptive
+            if (String.IsNullOrEmpty(value))
+            {
+                bool v = int.TryParse(value, out int result);
+                return v;
+            }
+            return false;
         }
+        */
         private double Addition(double value1, double value2)
         {
             return value1 + value2;

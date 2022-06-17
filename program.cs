@@ -1,8 +1,8 @@
 /* File Information
 Title: SDV503 Assessment 3
 Author: Rhylei Tremlett
-Version: 1.5
-Date: 16/06/2022
+Version: 1.6
+Date: 17/06/2022
 ------------------------------------------------------------- */
 using System;
 
@@ -96,11 +96,13 @@ namespace Assessment_3
     {
         public void Begin()
         {
+            Console.Title = "Calculator";
             Calculator calculator = new Calculator();
 
             bool flag = true;
             while (flag)
             {
+                Console.Clear();
                 int choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder", 1, 6);
                 int first = Input("Enter the first number:", Int32.MinValue, Int32.MaxValue);
                 int second = Input("Enter the second number", Int32.MinValue, Int32.MaxValue);
@@ -108,21 +110,33 @@ namespace Assessment_3
                 switch (choice)
                 {
                     case 1:
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine(calculator.Addition(first, second));
                         break;
                     case 2:
+                        Console.BackgroundColor = ConsoleColor.Cyan;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine(calculator.Subtraction(first, second));
                         break;
                     case 3:
+                        Console.BackgroundColor = ConsoleColor.Yellow;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine(calculator.Division(first, second));
                         break;
                     case 4:
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine(calculator.Muliplication(first, second));
                         break;
                     case 5:
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine(calculator.Power(first, second));
                         break;
                     case 6:
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine(calculator.Remainder(first, second));
                         break;
                 }
@@ -131,6 +145,7 @@ namespace Assessment_3
 
         private double Addition(double value1, double value2)
         {
+
             return value1 + value2;
         }
         private double Subtraction(double value1, double value2)

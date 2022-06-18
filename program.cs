@@ -55,12 +55,12 @@ namespace Assessment_3
             JavaScript javascript = new JavaScript();
 
             // ask user to enter a value for the array length
-            int size = Input("Enter the size of the jagged array", Int32.MinValue, Int32.MaxValue);
+            int size = InputInt("Enter the size of the jagged array", Int32.MinValue, Int32.MaxValue);
 
             // take user input and pass it as an argument to the construct method
             Console.WriteLine("This program will randomly generate a jagged array, it takes two parameters, a minimum value and a maximum value. Values are inclusive.");
-            int min = Input("Define the minimum", Int32.MinValue, Int32.MaxValue);
-            int max = Input("Define the maximum", Int32.MinValue, Int32.MaxValue);
+            int min = InputInt("Define the minimum", Int32.MinValue, Int32.MaxValue);
+            int max = InputInt("Define the maximum", Int32.MinValue, Int32.MaxValue);
 
             // construct the jagged array
             int[][] jaggedArray = javascript.Construct(size, min, max);
@@ -103,9 +103,9 @@ namespace Assessment_3
             while (flag)
             {
                 
-                int choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder\n", 1, 6);
-                int first = Input("Enter the first number: ", Int32.MinValue, Int32.MaxValue);
-                int second = Input("Enter the second number: ", Int32.MinValue, Int32.MaxValue);
+                int choice = InputInt("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder\n", 1, 6);
+                double first = InputDouble("Enter the first number: ", Double.MinValue, Double.MaxValue);
+                double second = InputDouble("Enter the second number: ", Double.MinValue, Double.MaxValue);
 
                 switch (choice)
                 {
@@ -192,7 +192,7 @@ namespace Assessment_3
         if it succesfully parses it then is check if the value falls
         insides the range provided, if not it gives an error and repeats
         */
-        public int Input(string message, int min, int max)
+        public int InputInt(string message, int min, int max)
         {
             // write message to console
             Console.Write(message);
@@ -221,11 +221,42 @@ namespace Assessment_3
                 }
             }
         }
+
+        public double InputDouble(string message, double min, double max)
+        {
+            // write message to console
+            Console.Write(message);
+            while (true)
+            {
+                // take input and attempt to parse
+                string input = Console.ReadLine();
+                double.TryParse(input, out double result);
+                // if parse is successful
+                if (result != 0)
+                {
+                    // check if parsed value falls in the range
+                    if (result <= max && result >= min)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That was not a valid input, please try again.");
+                    }
+                }
+                // if parse fails
+                else
+                {
+                    Console.WriteLine("That was not a valid input, please try again.");
+                }
+            }
+        }
+
         static void Main()
         {
             Program program = new Program();
 
-            int choice = program.Input("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code\n", 1, 2);
+            int choice = program.InputInt("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code\n", 1, 2);
 
             if (choice == 1)
             {

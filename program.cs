@@ -1,8 +1,8 @@
 /* File Information
 Title: SDV503 Assessment 3
 Author: Rhylei Tremlett
-Version: 1.6
-Date: 17/06/2022
+Version: 1.7
+Date: 18/06/2022
 ------------------------------------------------------------- */
 using System;
 
@@ -102,44 +102,53 @@ namespace Assessment_3
             bool flag = true;
             while (flag)
             {
-                Console.Clear();
-                int choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder", 1, 6);
-                int first = Input("Enter the first number:", Int32.MinValue, Int32.MaxValue);
-                int second = Input("Enter the second number", Int32.MinValue, Int32.MaxValue);
+                
+                int choice = Input("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder\n", 1, 6);
+                int first = Input("Enter the first number: ", Int32.MinValue, Int32.MaxValue);
+                int second = Input("Enter the second number: ", Int32.MinValue, Int32.MaxValue);
 
                 switch (choice)
                 {
                     case 1:
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Addition(first, second));
                         break;
                     case 2:
                         Console.BackgroundColor = ConsoleColor.Cyan;
                         Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Subtraction(first, second));
                         break;
                     case 3:
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Division(first, second));
                         break;
                     case 4:
                         Console.BackgroundColor = ConsoleColor.DarkMagenta;
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Muliplication(first, second));
                         break;
                     case 5:
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Power(first, second));
                         break;
                     case 6:
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("Answer: ");
                         Console.WriteLine(calculator.Remainder(first, second));
                         break;
                 }
+                Console.WriteLine("Press enter to continue...");
+                Console.ReadLine();
+                Console.Clear();
             }
         }
 
@@ -186,7 +195,7 @@ namespace Assessment_3
         public int Input(string message, int min, int max)
         {
             // write message to console
-            Console.WriteLine(message);
+            Console.Write(message);
             while (true)
             {
                 // take input and attempt to parse
@@ -216,7 +225,7 @@ namespace Assessment_3
         {
             Program program = new Program();
 
-            int choice = program.Input("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code", 1, 2);
+            int choice = program.Input("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code\n", 1, 2);
 
             if (choice == 1)
             {

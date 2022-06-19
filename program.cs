@@ -10,10 +10,8 @@ namespace Assessment_3
 {
     public class JavaScript : Program
     {
-        /* 
-         * creates a jagged array with random values,
-         * length is defined by the user.
-         */
+         // creates a jagged array with random values,
+         // length is defined by the user.
         private int[][] Construct(int size, int min, int max)
         {
             // initialize an empty array of arrays with length == size
@@ -24,7 +22,7 @@ namespace Assessment_3
             for (int i = 0; i < jagged.Length; i++)
             {
                 // give the sub array a length between 1 - 10
-                int col = rnd.Next(1, 10);
+                int col = rnd.Next(5, 10);
                 jagged[i] = new int[col];
                 for (int j = 0; j < jagged[i].Length; j++)
                 {
@@ -51,16 +49,20 @@ namespace Assessment_3
 
         public void Begin()
         {
+            // clear console
+            Console.Clear();
             // Instantiate the Program class as an object
             JavaScript javascript = new JavaScript();
 
+            // explain the program to user
+            Console.WriteLine("This program will randomly generate a jagged array, you will be asked to define the length of the jagged array. Each sub-array will have random lengths between 5 and 10. The program will ask for a minimum value and a maximum value and will fill the sub-arrays with numbers inside that range (values are inclusive).\n");
+            
             // ask user to enter a value for the array length
-            int size = InputInt("Enter the size of the jagged array", Int32.MinValue, Int32.MaxValue);
+            int size = InputInt("Enter the length of the jagged array: ", Int32.MinValue, Int32.MaxValue);
 
             // take user input and pass it as an argument to the construct method
-            Console.WriteLine("This program will randomly generate a jagged array, it takes two parameters, a minimum value and a maximum value. Values are inclusive.");
-            int min = InputInt("Define the minimum", Int32.MinValue, Int32.MaxValue);
-            int max = InputInt("Define the maximum", Int32.MinValue, Int32.MaxValue);
+           int min = InputInt("Define the minimum: ", Int32.MinValue, Int32.MaxValue);
+            int max = InputInt("Define the maximum: ", Int32.MinValue, Int32.MaxValue);
 
             // construct the jagged array
             int[][] jaggedArray = javascript.Construct(size, min, max);
@@ -86,7 +88,7 @@ namespace Assessment_3
             javascript.WriteArray(jaggedArray);
 
             // write out the largest numbers
-            Console.WriteLine("Largest Numbers");
+            Console.WriteLine("\nLargest Numbers:");
             foreach (int number in largestNumbers) { Console.WriteLine(number); }
             Console.ReadLine();
         }
@@ -96,85 +98,89 @@ namespace Assessment_3
     {
         public void Begin()
         {
-            Console.Title = "Calculator";
+            // intialize the calculator class
             Calculator calculator = new Calculator();
 
+            // begin an infinite loop
             bool flag = true;
             while (flag)
             {
-                
-                int choice = InputInt("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder\n", 1, 6);
+                Console.Clear();
+
+                // take input to select a math method
+                int choice = InputInt("Please select which operator you would like to use:\n1. Addition\n2. Subtraction\n3. Division\n4. Muliplication\n5. Power\n6. Remainder\n7. EXIT\n", 1, 7);
+                // if the user choose to exit, then break the loop
+                // Environment.Exit() and flag = false, don't work the way I want them too here...
+                if (choice == 7) { break; }
+
+                // take input for first and second numbers
                 double first = InputDouble("Enter the first number: ", Double.MinValue, Double.MaxValue);
                 double second = InputDouble("Enter the second number: ", Double.MinValue, Double.MaxValue);
 
+                // runs the math method based on 'choice' 
                 switch (choice)
                 {
                     case 1:
-                        Console.BackgroundColor = ConsoleColor.White;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Addition(first, second));
+                        Console.WriteLine("Answer: " + calculator.Addition(first, second));
                         break;
                     case 2:
-                        Console.BackgroundColor = ConsoleColor.Cyan;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Subtraction(first, second));
+                        Console.WriteLine("Answer: " + calculator.Subtraction(first, second));
                         break;
                     case 3:
-                        Console.BackgroundColor = ConsoleColor.Yellow;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Division(first, second));
+                        Console.WriteLine("Answer: " + calculator.Division(first, second));
                         break;
                     case 4:
-                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Muliplication(first, second));
+                        Console.WriteLine("Answer: " + calculator.Muliplication(first, second));
                         break;
                     case 5:
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Power(first, second));
+                        Console.WriteLine("Answer: " + calculator.Power(first, second));
                         break;
                     case 6:
-                        Console.BackgroundColor = ConsoleColor.Green;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("Answer: ");
-                        Console.WriteLine(calculator.Remainder(first, second));
+                        Console.WriteLine("Answer: " + calculator.Remainder(first, second));
                         break;
                 }
+
+                // this lets the user continue after reading the answer
                 Console.WriteLine("Press enter to continue...");
                 Console.ReadLine();
-                Console.Clear();
             }
         }
 
+        // below are all of the mathematical methods that get called each one changes the colour scheme
         private double Addition(double value1, double value2)
         {
-
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             return value1 + value2;
         }
         private double Subtraction(double value1, double value2)
         {
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Black;
             return value1 - value2;
         }
         private double Division(double value1, double value2)
         {
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Black;
             return value1 / value2;
         }
         private double Muliplication(double value1, double value2)
         {
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.ForegroundColor = ConsoleColor.White;
             return value1 * value2;
         }
         private double Power(double value1, double value2)
         {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
             return Math.Pow(value1, value2);
         }
         private double Remainder(double value1, double value2)
         {
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
             return value1 % value2;
         }
     }
@@ -222,6 +228,7 @@ namespace Assessment_3
             }
         }
 
+        // same as above except handles double instead of int
         public double InputDouble(string message, double min, double max)
         {
             // write message to console
@@ -254,10 +261,16 @@ namespace Assessment_3
 
         static void Main()
         {
+            // initialize the program class
             Program program = new Program();
+            
+            // set console title
+            Console.Title = "Rhylei-Tremlett-SDV503-A3";
 
+            // take input for program selection
             int choice = program.InputInt("Please select which program you would like to run:\n(At any point press CTRL + C to Exit the program)\n1. Calculator\n2. Javascript Converted Code\n", 1, 2);
 
+            // Run either program based on choice
             if (choice == 1)
             {
                 Calculator calculator = new Calculator();
